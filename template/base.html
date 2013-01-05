@@ -1,23 +1,86 @@
-<!doctype html>
-<head>
-  <title>{{title}} | {{site_title}}</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <meta name="description" content="{{snip}}">
+ 
+      <title>{{site_title}}</title>
 
-  <link rel="stylesheet" href="/static/stylesheets/screen.css" type="text/css" media="screen" charset="utf-8">
-</head>
-<body>
-  <div id="main">
-    <header><a href="/">{{site_title}}</a></header>
 
-    <section id="articles">
-      {{{template}}}
-    </section>
+
+
+
+    
+    <link rel="stylesheet" href="/static/css/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="/static/css/print.css" type="text/css" media="print">
+    <!--[if lt IE 8]><link rel="stylesheet" href="/media/css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+    <link rel="stylesheet" href="/static/css/diego.css" type="text/css" >
+        
+    <link rel="stylesheet" href="/static/css-wiki/basic.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="/static/css-wiki/content.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="/static/css-wiki/design.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="/static/css-wiki/includes.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="/static/css-wiki/mobile.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="/static/css-wiki/structure.css" type="text/css" media="screen, projection">
+
+    </head>
+
+    <body>
+
+<div class="container">
+  <!--div id="padding" class="span-24 last">
+  </div-->
+  <div id="mid" class="span-24">
+  
+  <div id="header" class="span-24">
+    <h1><a href="/index.html">DIEGO CECCARELLI</h1>
+     <div id="nav-menu">
+<ul>
+<li class="ci" ><a  href="/index.html">Home</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/snippets">Snippets</a></li>
+<li><a href="/misc">Misc</a></li>
+</ul> 
+     </div>
+
+    </div>
+  <div id="content" class="span-15">
+	{{{template}}}
   </div>
+<div id="sidebar" class="span-6 last">
+    <img src="/static/img/diego.jpg" />
+	<h4 id="contact_information">Contact Information</h4>
+	
 
-  <footer>
-    Powered by <a href="https://github.com/borismus/lightning">Lightning</a>.
-  </footer>
+	<strong>Affiliations</strong>:<br/>
+	<br/>
+	
+	<a href="/static/img/hpclab.jpg" class="media wikilink2" title="hpclab.jpg"><img src="/static/img/hpclab.jpg" class="medialeft" title="hpclab" alt="hpclab" width="150" /></a><a href="http://hpc.isti.cnr.it/" class="urlextern" title="http://hpc.isti.cnr.it/"  rel="nofollow">HPCLab</a> - High Performance Computing Laboratory, <a href="http://isti.cnr.it/" class="urlextern" title="http://isti.cnr.it/"  rel="nofollow"> ISTI-CNR </a> (Pisa, Italy) <br/>
+	<br/>
+	
+	<a href="/static/img/deri.jpg" class="media wikilink2" title="deri.jpg"><img src="/static/img/deri.jpg" class="medialeft" title=" Digital Enterprise Research Institute Logo" alt=" Digital Enterprise Research Institute Logo" width="50" /></a> <a href="http://deri.ie/" class="urlextern" title="http://deri.ie/"  rel="nofollow">DERI</a> - Digital Enterprise Research Institute (Galway, Ireland)
+	<br/>
+	<br/>
+	<a href="/static/img/unipi.jpg" class="media wikilink2" title="unipi.jpg"><img src="/static/img/unipi.jpg" class="medialeft" title=" University of Pisa" alt=" University of Pisa" width="50" /></a> <a href="http://www.di.unipi.it/" class="urlextern" title="http://www.di.unipi.it/"  rel="nofollow"> Computer Science Department </a> at <a href="http://www.unipi.it" class="urlextern" title="http://www.unipi.it"  rel="nofollow"> University of Pisa </a>(Pisa, Italy)
+	<br/>
+	<br/>
+	<h4> Contacts </h4>
+	<br/>
+	
+	<strong>Address</strong>: Via Moruzzi, 1, 56124 - Pisa - Italy <br/>
+	<strong>Room number</strong>: C-22	 <br/>
+	<strong>Telephone</strong>: +39 050 315 3496 <br/>
+	<strong>E-mail</strong>: [name].[surname][at]isti.cnr.i <br/>
+	<strong>Unimap</strong>: <a href="http://unimap.unipi.it/cercapersone/dettaglio.php?ri=57053" class="urlextern" title="http://unimap.unipi.it/cercapersone/dettaglio.php?ri=57053"  rel="nofollow">http://unimap.unipi.it/cercapersone/dettaglio.php?ri=57053</a>
+
+
+</div>
+
+  <div id="footer" class="span-24">
+	Powered by <a href="https://github.com/borismus/lightning">Lightning</a>.
+	</div>
+</div>
+</div>
+
 </body>

@@ -1,7 +1,37 @@
-Welcome
+Diego Ceccarelli
 =======
 list:
 type: index
-limit: 10
+snip: diego ceccarelli university of pisa computer science information retrieval semantic web
 
-Welcome to my awesome blog!
+
+
+
+I'm a [[ http://www.di.unipi.it/phd |Ph.D. student]] at the [[http://www.unipi.it| University of Pisa]]. 
+
+=== Publications ===
+  - D. Ceccarelli, S.Gordea, C. Lucchese, F.M. Nardini R. Perego **On Suggesting Entities as Web Search Queries**. //To appear// in Proceedings of IIR '13: 4th edition of the Italian Information Retrieval Workshop, Pisa, Italy, January 2013. 
+  - D. Ceccarelli, S.Gordea, C. Lucchese, F.M. Nardini R. Perego **When Entities Meet Query Recommender Systems: Semantic Search Shortcuts**. //To appear// in Proceedings of SAC '13: 28th Symposium On Applied Computing, Coimbra, Portugal, March 2013. 
+  - R. Blanco, D. Ceccarelli, C. Lucchese, R. Perego, F. Silvestri **You Should Read This! Let Me Explain You Why! - Explaining News Recommendations to Users**, //To appear// in Proceedings of CIKM '12: 21st ACM Conference on Information and Knowledge Management, Maui, Hawaii, October 2012.
+  - T. E. Perry, S. Campinas, D. Ceccarelli, R. Delbru, G. Tummarello. **Introducing RDF Graph Summary with application to Assisted SPARQL Formulation**, //To appear// in Proceedings of WebS '12:  11th International Workshop on Web Semantics and Information Processing, Vienna, Austria, September 2012.
+  - D. Ceccarelli, S. Gordea, C. Lucchese, F. M. Nardini and G. Tolomei. **Improving Europeana Search Experience Using Query Logs **. In Proceedings of TPDL '11: International Conference on Theory and Practice of Digital Libraries, Berlin, Germany, September 2011.
+  - D. Ceccarelli, S. Gordea, C. Lucchese, F.M. Nardini, R. Perego, G. Tolomei. **Discovering Europeana users' search behavior**. In ERCIM News, No. 86, 2011.
+  - S. Campinas, D. Ceccarelli, T. E. Perry, R. Delbru, K. Balog, and G. Tummarello. **The Sindice-2011 Dataset for Entity-Oriented Search in the Web of Data**. In Proceedings of EOS 2011 : SIGIR 2011 Workshop on Entity-Oriented Search, July 28, 2011   Beijing, China.
+  - D. Ceccarelli, C. Lucchese, S. Orlando, R. Perego, F. Silvestri. **Caching query-biased snippets for efficient retrieval**. In Proceedings of EDBT '11: International Conference on Extending Database Technology, Uppsala, Sweden, March 2011.
+
+
+=== Education ===
+  * Ph.D. student since January 2010, University of Pisa.
+  * M.Sc. //cum laude// in Computer Science, University of Pisa, 2009.
+  * B.Sc. //cum laude// in Computer Science , University of Pisa, 2006.
+  * Bachelor Of Music, [[http://www.istitutomascagni.it/| Musical Institute Pietro Mascagni]], 2006.
+
+
+=== Research Fields of Interest ===
+  * Information Retrieval
+  * Semantic Information Retrieval
+  * Pattern Matching
+  * Languages
+
+=== Projects ===
+{{assets.gif |assets}}  **ASSETS** is a 2-year project that aims to improve the usability of [[http://www.europeana.eu/|Europeana]] by developing, implementing and deploying software services focused on search, browsing and interfaces. All software services created by ASSETS will be available as Open Source code.

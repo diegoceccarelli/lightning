@@ -193,9 +193,11 @@ class SiteBuilder:
     data = yaml.load(''.join(yaml_lines)) or {}
     # Process the rest of the post as Markdown.
     markdown_lines = lines[separator_index+1:]
+
     content = convert(''.join(markdown_lines))
+
     # If there's no snip specified, try to parse it before the <!--more--> tag.
-    snip = 'snip' in data and markdown2.markdown(data['snip']) \
+    snip = 'snip' in data and convert(data['snip']) \
                            or self.parse_snip(content)
     # If there's no snip, juse use the content, but remember that it's short.
     data['is_long'] = bool(snip)
@@ -516,6 +518,8 @@ class Command:
 command_map = {
   'build': Command.BUILD,
   'rebuild': Command.REBUILD,
+  'up': Command.REBUILD,
+  'show': Command.PREVIEW,
   'preview': Command.PREVIEW,
   'watch': Command.WATCH,
   'purge': Command.PURGE,

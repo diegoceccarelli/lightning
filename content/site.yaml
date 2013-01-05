@@ -1,4 +1,4 @@
-site_title: Lightning-powered Blog
+site_title: Diego Ceccarelli
 date_format: '%d %B %Y'
 verbs:
   post: 'Published'
@@ -11,3 +11,4 @@ permalink_format:
   archive: '{{slug}}'
   feed: '{{slug}}'
   index: ''
+  blog: '{{slug}}'

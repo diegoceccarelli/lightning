@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 
 import sys
+import codecs
 import os
 import subprocess
 from jinja2 import nodes
 from jinja2.ext import Extension
 from jinja2 import Environment, Undefined
 import HTMLParser
+from unidecode import unidecode
 import re
 
 _htmlparser = HTMLParser.HTMLParser()
@@ -25,14 +27,16 @@ if __name__ == "__main__":
 def convert(text):
 	global unescape
 	o = open("/tmp/doku","w")
-	
+	text = unidecode(text)
+
 	o.write(text)
 	o.close()
-	o = open("/tmp/doku")
+	
+	o = open("/tmp/doku","r")
 	output = subprocess.check_output(["dokuwiki/bin/render.php"],stdin=o)
 	output = re.sub('/dokuwiki/bin/lib/exe/detail.php?[^>]*media=(?P<file>[^">]+)', '/static/img/\g<file>', output)
 	output = re.sub('/dokuwiki/bin/lib/exe/fetch.php?[^>]*media=(?P<file>[^">]+)', '/static/img/\g<file>', output)
-	
+	output = unidecode(output)
 	return output
 	
 
