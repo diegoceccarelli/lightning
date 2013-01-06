@@ -9,6 +9,7 @@ from jinja2.ext import Extension
 from jinja2 import Environment, Undefined
 import HTMLParser
 from unidecode import unidecode
+import bibtex2html
 import re
 
 _htmlparser = HTMLParser.HTMLParser()
@@ -45,11 +46,14 @@ def add_bibtex(content):
 	bibtex=re.findall( r'@biblio[{]([^}]+)[}]',content)
 	for b in bibtex:
 		f = open("biblio/"+b)
-		text = " ".join(f.readlines())
-		text = "<div class='biblio' id='"+b+"'>\n"+text+"\n</div>"
-
+		entries = bibtex2html.parse_bibtex("biblio/"+b)
+		html = "<ol>\n"
+		for e in entries:
+			html+="<li>"+e+"</li>"
+		html += "</ol>\n"
+		text = "<div class='biblio' id='"+b+"'>\n"+html+"\n</div>"
 		content = content.replace("@biblio{"+b+"}",text)
-
+		print "readed ",len(entries), "bibtex entries"
 	return content 
 
 

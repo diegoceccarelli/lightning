@@ -27,6 +27,19 @@
         padding:30px 30px 30px 30px; 
       }
 
+	 .title {
+        font-weight:bold;
+      }
+
+	.journal {
+         font-style: italic;
+      }
+
+	.bibtex{
+		 visibility:hidden;
+		 height:0px;
+	}
+
       #subtitle {
         color: #C0C0C0;
       }

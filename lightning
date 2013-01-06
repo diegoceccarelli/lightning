@@ -5,6 +5,7 @@ import datetime
 import time
 from distutils import dir_util
 from dokuwiki import convert
+import bibtex2html
 
 import yaml
 import pystache
