@@ -7,7 +7,6 @@ from distutils import dir_util
 from dokuwiki import convert
 
 import yaml
-import markdown2
 import pystache
 import sys
 
@@ -196,6 +195,7 @@ class SiteBuilder:
 
     content = convert(''.join(markdown_lines))
 
+    
     # If there's no snip specified, try to parse it before the <!--more--> tag.
     snip = 'snip' in data and convert(data['snip']) \
                            or self.parse_snip(content)

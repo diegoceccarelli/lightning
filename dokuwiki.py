@@ -37,8 +37,20 @@ def convert(text):
 	output = re.sub('/dokuwiki/bin/lib/exe/detail.php?[^>]*media=(?P<file>[^">]+)', '/static/img/\g<file>', output)
 	output = re.sub('/dokuwiki/bin/lib/exe/fetch.php?[^>]*media=(?P<file>[^">]+)', '/static/img/\g<file>', output)
 	output = unidecode(output)
+	output = add_bibtex(output)
 	return output
 	
+
+def add_bibtex(content):
+	bibtex=re.findall( r'@biblio[{]([^}]+)[}]',content)
+	for b in bibtex:
+		f = open("biblio/"+b)
+		text = " ".join(f.readlines())
+		text = "<div class='biblio' id='"+b+"'>\n"+text+"\n</div>"
+
+		content = content.replace("@biblio{"+b+"}",text)
+
+	return content 
 
 
 def doku(text):

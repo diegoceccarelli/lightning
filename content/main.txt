@@ -8,6 +8,7 @@ snip: diego ceccarelli university of pisa computer science information retrieval
 
 
 I'm a [[ http://www.di.unipi.it/phd |Ph.D. student]] at the [[http://www.unipi.it| University of Pisa]]. 
+@biblio{test}
 
 === Publications ===
   - D. Ceccarelli, S.Gordea, C. Lucchese, F.M. Nardini R. Perego **On Suggesting Entities as Web Search Queries**. //To appear// in Proceedings of IIR '13: 4th edition of the Italian Information Retrieval Workshop, Pisa, Italy, January 2013. 
@@ -26,6 +27,7 @@ I'm a [[ http://www.di.unipi.it/phd |Ph.D. student]] at the [[http://www.unipi.i
   * B.Sc. //cum laude// in Computer Science , University of Pisa, 2006.
   * Bachelor Of Music, [[http://www.istitutomascagni.it/| Musical Institute Pietro Mascagni]], 2006.
 
+@biblio{test1}
 
 === Research Fields of Interest ===
   * Information Retrieval
