@@ -2,6 +2,6 @@ Blog
 =======
 list:
 type: blog
-snip: diego ceccarelli university of pisa computer science information retrieval semantic web
+snip: Diego Ceccarelli received his Masters degree in Computer Science from University of Pisa in 2009. Currently he is a Ph.D. at University of Pisa and a Research Fellow at the High Performance Computing Laboratory, ISTI-CNR.
 
 

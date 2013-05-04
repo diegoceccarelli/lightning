@@ -195,14 +195,14 @@ a:visited {
     text-decoration: none;
     color: __link__;
 }
-a:link:hover,
+/*a:link:hover,
 a:visited:hover,
 a:link:focus,
 a:visited:focus,
-a:link:active,
-a:visited:active {
-    text-decoration: underline;
-}
+a:link:active,*/
+/*a:visited:active {
+    text-decoration: f;
+}*/
 
 
 /*____________ misc ____________*/

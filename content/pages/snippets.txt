@@ -4,23 +4,41 @@ list:
 type: page
 snip: diego ceccarelli university of pisa computer science code snippets
 
+===== [bash] awk insert blank line every n lines ===== 
 
-====== Bash ======
-===== backspace al posto delete ======
-screen sclera e mette il delete al posto del backspace,
-per mettere a posto You can define an alias in your ~/.bashrc file like
+    awk '{ if ((NR % 5) == 0) printf("\n"); print; }'
+
+for n == 5, of course. Substitute whatever your idea of n is.
+	
+
+===== [bash] convert windows source file to unix =====
+
+	dos2unix *.py
+
+===== [bash] remove first column from a file =====
+
+	cut -f2- filename
+
+===== [bash] replace delete with backspace in screen ======
+
+You can define an alias in your ~/.bashrc file like
+
   alias screen='TERM=screen screen'
  
-===== classpath java ======
-aggiungere tutti i jar in una directory:
+===== [java] generate classpath ======
+[OLD use maven ;)]
+all the jars in a directory: 
 
   JAR=$(for i in $(ls); do  echo $(pwd)/$i; done | tr "\n" ":").
   
-ricorsivo
+recorsive: 
+
   JAR=$(find . -type f | sed "s#^.#$(pwd)#" | egrep ".*jar$" | tr "\n" ":" ).
   
-===== creare un jar con tutto con mvn ======
-aggiungi al pom 
+===== [maven] create a jar with all the dependecies in maven ======
+
+add this snippet to the code
+
 <code>
 	<build>
 	    <plugins>
@@ -41,63 +59,47 @@ aggiungi al pom
 	</build>
 </code>
 
-quindi compila:
+compile using
 <code>
-mvn  assembly:single
+mvn  assembly:assembly
 </code>
-produce un jar (..with-dependences) e quel punto devi importare solo quello.
-===== sort con tab come separatore =====
-  sort -t$'\t' -k 2 file_da_sortare
+produce a jar (..with-dependences) with all the dependecies
+
+===== [bash] sort using tab as separator =====
+  sort -t$'\t' -k 2 file
   
-===== aumentare dimensione memoria virtuale java ===== 
+===== [java] change java heap size ===== 
   java -Xmx<size> set maximum Java heap size
   e.g. java -Xmx4196m Pippo
   
-===== prendere url rediretta ===== 
+===== [bash] resolve redirected url ===== 
   URL=...
   REDIRECT_URL=$(curl -w %{redirect_url} URL) 
  
-===== bashrc pompato =====
+===== my bashrc  =====
 [[http://www.di.unipi.it/~ceccarel/bashrc|bashrc]]
 
-===== configurare cose da pirate pad ===== 
+===== [bash] get a txt file edited from pirate pad ===== 
 <code>
 curl http://piratepad.net/ep/pad/export/$id/latest?format=txt
 </code>
 
-===== cose da istallare su una macchina piallata =====
-<code>
-# subversion
-sudo apt-get install subversion
-# JAVA scommentare le line in sources 'parner'
-sudo apt-get update
-sudo apt-get install sun-java6-jre sun-java6-plugin sun-java6-fonts
-sudo apt-get install sun-java6-javadb sun-java6-jre sun-java6-jdk
-# Maven
-sudo apt-get install maven2
-</code>
 
-===== non trova JAVA_HOME =====
+
+===== [java] does not find JAVA_HOME =====
 export JAVA_HOME="/usr/lib/jvm/java-6-sun-1.6.0.22/"
 
 **ornellaia** ''export JAVA_HOME=/usr/lib/jvm/java-6-sun-1.6.0.24/''
 
-===== script per tirare giù il bibtex =====
-[[http://code.activestate.com/recipes/523047-search-google-scholar/]]
 
-===== microblogs =====
-  
-  * andare su [[http://twitter.com/apps/create]]
-  * scazzare e poi client e read and write  
-  * installare twurl [[https://github.com/marcel/twurl]]
-  * ora con ''twurl -d 'status=hello' /1/statuses/update.xml'' 
+ello' /1/statuses/update.xml'' 
 
-===== Fare il dump di un sito a partire da una pagina =====
+=====  [bash] dump a website =====
 <code>
 wget -r -H -l1 -k -P $targetdir --exclude-domains ${comma-seperated domain name} --user=xxx --password=xxx $url
 </code>
 
-===== Tirare giù una pagina con autenticazione ===== 
+===== [bash] get a webpage with autentication ===== 
 <code>
 url= ""
 outpage = ""
@@ -106,61 +108,36 @@ pass=""
 curl -u $user:$pass $url >  $outpage
 </code>
 
-===== Numero di risultati per una query su google =====
+===== [bash] number of results for a query on google =====
 <code>
 query=pippo+pluto
 results=$(curl -A "Firefox/3.0" http://www.google.com/search?q=$query | egrep -o "About [1234567890,]+ results" | tr -d ' ,Aboutresults')
 </code>
-===== 10 hints carini =====
+
+===== [linux] 10 nice hints =====
 http://www.ibm.com/developerworks/linux/library/l-10sysadtips/
 
-===== how to get the sum of all the lines in the file ===== 
+===== [bash] how to get the sum of all the lines in the file ===== 
 <code>
 awk '{a+=$0}END{print a}' abc
 </code>
 
-===== Staccare il garbage collector in python =====
-se usi strutture dati grosse in python, il garbage collector 
-può rallentare notevolmente l'esecuzione.. conviene disabilitarlo 
+===== [python] remove the garbage collector in python =====
+when you are working with big data structure in python the garbage
+collector can slow down the exection, sometime is better to disable it 
+
 <code>
 import gc
 gc.disable()
 </code>
 
-===== Fare query a solr da terminale =====
+===== [bash] how to query solr from the shell =====
+
 [[http://wiki.apache.org/solr/Solrj#EmbeddedSolrServer]]
 
-===== Installare mongoDB su macosx =====
-<code>
-curl -O http://downloads.mongodb.org/osx/mongodb-osx-x86_64-1.4.0.tgz
-tar xzf mongodb-osx-x86_64-1.4.0.tgz
-sudo mv mongodb-osx-x86_64-1.4.0 /usr/local/mongodb
-sudo mkdir /usr/local/mongodb_data /var/log/mongodb
-sudo chown -R root /usr/local/mongodb
-</code>
-(If you’re on a 32-bit machine, substitute in i386 for each x86_64 above.)
 
-
-Next, you’ll want to make a config file so you can change the server’s options without fiddling with command-line arguments.
-
-Save as: /usr/local/mongodb/mongod.conf
-
-<code>
-# Store data alongside MongoDB instead of the default, /data/db/
-dbpath = /usr/local/mongodb_data
-
-# Only accept local connections
-bind_ip = 127.0.0.1
-</code>
-
-
-===== Prendere un pezzo di una riga =====
-<code>
- awk '{for (i=2; i <= NF; i++) {printf("%s ",$i)} print ":"$1 }
-</code>
-
-===== sommare righe con un campo uguale =====
-array associativo awk:
+===== [bash] sum rows with the some field =====
+dictionary in awk:
 <code>
 $ cat nayan.out
 saman 1
@@ -177,28 +154,16 @@ saman 5
 gihan 2
 </code>
 
-===== risorse in un jar =====
-[[http://stackoverflow.com/questions/1266615/maven-configuration-of-dependency-jar| accedere a una risorsa in un jar ]]
+===== [maven] resources in a jar =====
+[[http://stackoverflow.com/questions/1266615/maven-configuration-of-dependency-jar| maven-configuration-of-dependency-jar ]]
 
-===== eclipse =====
-Opening a workspace with several projects, I was presented with the following error for two of the projects:
-To resolve this error in eclipse do the following steps.
 
-The resolution was to force a resave of the selected projects (and their .classpath files):
 
-Open the project properties
-Select Java Build Path > Libraries
-Add a new, arbitrary library (to be deleted later) > OK
-Wait for the workspace to refresh (or force a refresh of the project)
-The error(s) will go away
-Remove the dummy library
-The only other references I could find were to make minor alterations of contents of the .classpath file.
-
-===== scaricare tutti i pdf in una pagina =====
+===== [bash] get all pdf in a page =====
 
   wget -m --accept=pdf -nd  $url
   
-===== Iterare sulle linee di un file =====
+===== [bash] iterate over the lines of a jar =====
 <code>
 while read line
 do
@@ -206,25 +171,25 @@ echo $line
 done < file_to_read
 </code>
 
-===== Rimuovere righe bianche da un file =====
+===== [bash] remove blank lines in a file =====
 <code>
 grep -v '^[[:space:]]*$'  file
 </code>
 
-===== Change tmp dir in bash sort =====
+===== [bash] change tmp folder where sort put temporary files =====
 <code>
 sort -T dir ...
 </code>
 
-===== Contare numero di caratteri in una linea ===== 
+===== [bash] print number of a specific char for each line of a file ===== 
 
 <code>
 awk -F'#' '{ print NF-1}' 
 </code>
 
-numero di caratteri # nella linea
+prints how many chars '#' per line
 
-===== Rimpiazzare una sottostringa in bash =====
+===== [bash] replace a substring =====
 
 <code> 
 i=pippo.txt
@@ -232,52 +197,52 @@ echo ${i/txt/tex}
 #stamp pippo.tex
 </code>
 
-===== Ordinare su piu' campi =====
+===== [bash] sort on more than one field =====
 <code>
 sort -k 1,1 -k 3,3nr file.tsv > tmp
 </code>
 
-ordina sul primo campo e per elementi uguali del primo, sul terzo per numeri decrescenti
+sort on the first field and if two elements are equals on the first, on the third field in reverse integer order
 
-===== cancellare tutti i file a dimensione 0 =====
+===== [bash] remove all files of size 0 =====
 <code>
 find . -type f -size 0k -exec rm {} \; | awk '{ print $8 }'
 </code>
 
-===== eliminare pcaratteri in una certa posizione in tutte le righe =====
+===== [bash] remove all chars in a particular position from a file =====
 <code>
 cut -c44- file
 </code>
-toglie i primi 44 caratterida tutte le righe
+removes the first 44 characters from all the lines of file
 
-===== scorrere un file di log mentre viene generato =====
+===== [bash] view what is appended on file =====
 <code>
 tail -f file -n 
 </code>
 
-===== tag cloud da un file ===== 
+===== [bash] get words distribution from a file ===== 
 
 <code>
-cat introduzione.tex capitolo?.tex conclusioni.tex appendix.tex | tr '[A-Z]' '[a-z]' | tr -sc '[a-z]' '\n' | grep -v '^[^a-z]*$' | grep -v '^[\]'  |    sort | grep -vxf ~/stopwords-ita.txt | uniq -c   | sort -nrk1
+cat file | tr '[A-Z]' '[a-z]' | tr -sc '[a-z]' '\n' | grep -v '^[^a-z]*$' | grep -v '^[\]'  |    sort | grep -vxf topwords-ita.txt | uniq -c   | sort -nrk1
 </code>
 
-===== tr complement =====
+===== [bash] tr complement =====
 <code>
 tr -sc '[a-zA-Z]' '\n' < file
 </code>
 replace all chars that are **not** alphabetic in new lines
 
-===== togliere prime e ultime righe ===== 
+===== [bash] remove first or last lines ===== 
 <code> 
  sed '1d' filename 
 </code>
-la prima linea
+the first line
 <code> 
  sed '$d' filename 
 </code>
-l'ultima linea
+the last line 
 
-===== controllare parametri dati alla bash =====
+===== [bash] check bash parameters =====
 <code>
 # Check for proper number of command line args.
 
@@ -291,19 +256,19 @@ then
 fi
 </code>
 
-===== generate all the couples of terms =====
+===== [bash] Generate all the couples of terms =====
 
 <code>
 tr -sc '[a-zA-Z0-9\n]' '\t'  < inputFile | awk '{for (i = 1; i < NF; i++) print $i"\t"$(i+1); }'
 </code>
 
-===== trovare un processo su una certa porta ===== 
+===== [bash] Find a process listening on a particular port ===== 
 
 <code>
 sudo netstat -lpn |grep :8080
 </code>
 
-===== Check for proper number of command line args ===== 
+===== [bash] Check for proper number of command line args ===== 
 
 <code>
 EXPECTED_ARGS=1
@@ -316,7 +281,7 @@ then
 fi
 </code>
 
-=====  Sort in numeric order with scientific notation allowed	=====
+=====  [bash] Sort in numeric order with scientific notation allowed	=====
 <code>
 sort -g
 </code>

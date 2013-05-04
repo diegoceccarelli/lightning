@@ -2,22 +2,24 @@ Diego Ceccarelli
 =======
 list:
 type: index
-snip: diego ceccarelli university of pisa computer science information retrieval semantic web
+snip: Diego Ceccarelli received his Masters degree in Computer Science from University of Pisa in 2009. Currently he is a Ph.D. at University of Pisa and a Research Fellow at the High Performance Computing Laboratory, ISTI-CNR.
 
 
 
 
-I'm a [[ http://www.di.unipi.it/phd |Ph.D. student]] at the [[http://www.unipi.it| University of Pisa]]. 
-
+I'm a Ph.D. student at the [[http://www.unipi.it| University of Pisa]]. 
 
 === Publications ===
 @biblio{diego.bib}
 
+=== Datasets ===
+
+[[ sac13 | When Entities Meet Query Recommender Systems: Semantic Search Shortcuts]] dataset.  
 
 === Education ===
   * Ph.D. student since January 2010, University of Pisa.
   * M.Sc. //cum laude// in Computer Science, University of Pisa, 2009.
-  * B.Sc. //cum laude// in Computer Science , University of Pisa, 2006.
+  * B.Sc. //cum laude// in Computer Science, University of Pisa, 2006.
   * Bachelor Of Music, [[http://www.istitutomascagni.it/| Musical Institute Pietro Mascagni]], 2006.
 
 
@@ -28,4 +30,4 @@ I'm a [[ http://www.di.unipi.it/phd |Ph.D. student]] at the [[http://www.unipi.i
   * Languages
 
 === Projects ===
-{{assets.gif |assets}}  **ASSETS** is a 2-year project that aims to improve the usability of [[http://www.europeana.eu/|Europeana]] by developing, implementing and deploying software services focused on search, browsing and interfaces. All software services created by ASSETS will be available as Open Source code.
+{{assets.gif|assets}}  **ASSETS** is a 2-year project that aims to improve the usability of [[http://www.europeana.eu/|Europeana]] by developing, implementing and deploying software services focused on search, browsing and interfaces. All software services created by ASSETS will be available as Open Source code.
