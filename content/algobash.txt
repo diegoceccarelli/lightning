@@ -1,0 +1,29 @@
+Diego Ceccarelli
+=======
+list:
+type: index
+snip: Diego Ceccarelli received his Masters degree in Computer Science from University of Pisa in 2009. Currently he is a Ph.D. at University of Pisa and a Research Fellow at the High Performance Computing Laboratory, ISTI-CNR.
+
+Riassunto dei comandi bash che abbiamo visto durante l'esercitazione:
+
+==== creare una Tagcloud ==== 
+ 
+il sito [[http://www.wordle.net/advanced| wordle] genera bellissime tagcloud, a partire
+da file in formato: 
+
+  <tag>:<frequenza>
+
+generiamo la tagcloud per la pagina [[http://didawiki.cli.di.unipi.it/doku.php/informatica/all-b/start| homepage del corso]]  :
+
+  curl http://didawiki.cli.di.unipi.it/doku.php/informatica/all-b/start   | sed -e 's/<[^>]*>//g'  | tr 'A-Z' 'a-z' | egrep -v "[<&[]" | tr -sc '[a-z]' '\n' |  egrep  '.{5,20}' | sort | uniq -c | sort -nrk1 | awk '{print $2":"$1}' | head -100 
+
+analizziamo i comandi uno per uno: 
+
+  * **curl**: scarica una pagina internet Ãe la stampa sullo standard output;
+  * **sed**: sostituisce un pattern con un'altro, in questo caso, viene utilizzato per rimuovere i tag html (sequenze di caratteri che iniziano con < e finiscono con >); 
+  * **tr 'A-Z' 'a-z'**: sostituisce i caratteri maiuscoli con caratteri minuscoli;
+  * **egrep**: dato un file, filtra solo le righe che contegono il pattern passato, invocato col parametro '-v' ha il comportamento opposto, filtra solo le righe che non contengono 
+i caratteri <,&,[ (le parentesi quadre sono simboli speciali che indicano un insieme di caratteri, quindi "[<&[]" indica il caratter <,& o [) ;
+  * **tr -sc**: sostituisce sequenze di caratteri diversi dalle lettere dell'alfabeto con il new line (quindi genera una parola per riga);
+  * **sort**:  ordina le righe di un file;
+  * **uniq -c**: elimina righe duplicate, con l'opzione -c, mette in cima ad ogni riga il numero di duplicati rilevato; 
