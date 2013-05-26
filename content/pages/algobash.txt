@@ -1,0 +1,95 @@
+
+
+**Disclaimer**: La lezione sulla shell era //facoltativa// e non fa parte del programma. 
+Il suo contenuto e il riassunto contenuto in questa pagina non vi verranno chiesti in sede d'esame e non 
+siete obbligati a leggere oltre se non vi interessa.
+
+
+Riassunto dei comandi bash che abbiamo visto durante l'esercitazione:
+
+==== creare una Tagcloud ==== 
+ 
+il sito [[http://www.wordle.net/advanced| wordle]] genera bellissime tagcloud, a partire
+da file in formato: 
+
+  <tag>:<frequenza>
+
+generiamo la tagcloud per la pagina [[ http://didawiki.cli.di.unipi.it/doku.php/informatica/all-b/start | homepage del corso]]  :
+<code>
+curl http://didawiki.cli.di.unipi.it/doku.php/informatica/all-b/start  \
+   | tr '\n' ' '  \
+   | sed -e 's/<[^>]*>//g'  \
+   | tr 'A-Z' 'a-z' \
+   | tr -sc '[a-z]' '\n' \
+   | egrep -v "\\[" 
+   | egrep  '.{5,20}' \
+   | sort \
+   | uniq -c \
+   | sort -nrk1 \
+   | awk '{print $2":"$1}' \
+   | head -100 
+</code>
+analizziamo i comandi uno per uno: 
+
+  * ''curl'': scarica una pagina internet e la stampa sullo standard output;
+  * ''tr'': sostituisce caratteri o gruppi di caratteri con altri caratteri, in questo caso gli accapo diventano spazi (l'input diventano una sola riga);
+  * ''sed'': sostituisce un pattern con un'altro, in questo caso, viene utilizzato per rimuovere i tag html (sequenze di caratteri che iniziano con < e finiscono con >); 
+  * ''tr 'A-Z' 'a-z''': sostituisce i caratteri maiuscoli con caratteri minuscoli;
+  * ''tr -sc'': sostituisce sequenze di caratteri diversi dalle lettere dell'alfabeto con il new line (quindi genera una parola per riga);
+  * ''egrep'': dato un file, filtra solo le righe che contegono il pattern passato. Invocato col parametro ''-v'' ha il comportamento opposto: filtra solo le righe che non contengono il carattere ''['';
+  * ''sort'':  ordina le righe di un file;
+  * ''uniq -c'': elimina righe duplicate, con l'opzione ''-c'', mette in cima ad ogni riga il numero di duplicati rilevato (richiede che le righe in input siano ordinate, per questo prima viene invocato sort); 
+  * ''sort -nrk1'': ordina le righe sul primo campo (per default, i campi sono separati da spazi); i ''-n'' indice che il campo deve essere considerato un numero (è il valore restituito da count), il ''-r'' indica che l'ordinamento deve essere al //contrario// (reverse), quindi dal piu' grande al piu' piccolo;
+  * ''awk'': permette di manipolare i campi contenuti in un file (per default lo spazio e` il delimitatore dei campi), quindi in questo caso il primo campo (riferito con ''$1'') e` la frequenza, mentre il secondo campo (riferito con ''$2'' ) e` il termine. 
+  * ''head'': permette di selezionare solo le top k righe di un file (in questo caso 100), analogamente il comando ''tail'' permette di selezionare le ultime k righe di un file.   
+
+il risultato e`: 
+
+{{wordle.png|tag-cloud-algoritmica}}
+
+==== Comandi della shell di cui abbiamo parlato ====
+
+  * Path assoluto/relativo a un file
+  * utenti
+  * shortcuts della shell: uso del tab per completare, ricerca ricorsiva all'indietro (ctrl-r), interrompio (ctrl-c)
+  * metacaratteri: ''*'', ''?'' 
+  * elencare il contenuto di una cartella: ''ls'', ''ls -a'', ''ls -lh''
+  * impostare alias (esempio ''alias la='ls -a -Fs --color'')
+  * navigazione nel filesystem (''/'', ''~'', ''.'', ''..'', ''~utente'', ''-'')
+  * creare cartelle: ''mkdir''
+  * rimuovere file e cartelle ''rm'': chiedere ''-i'' o non chiedere ''-f'' conferma, remove ricorsivo ''rm -f'' 
+  * manuale: ''man''
+  * copiare e rinominare: ''cp'', ''mv''
+  * trovare file: ''locate'', ''find''
+  * cambiare i permessi: ''chmod'' 
+  * visualizzare il contenuto di un file lungo: ''less'' 
+  * stampare un file in output: ''cat''
+  * visualizzare le prime righe di un file: ''head'' 
+  * visualizzare le ultime righe di un file: ''tail''
+  * contare righe, parole, e caratteri di un file: ''wc''
+  * cercare le righe che matchano un pattern in un file: ''grep'', ''egrep''
+  * sostituire caratteri in un file: ''tr''
+  * sostituire pattern in un file: ''sed''
+  * manipolare campi di un file: ''awk''
+  * ordinare righe di un file: ''sort''
+  * editors di file da terminale: ''emacs'',''vim'',''pico''
+  * ridirigere l'output: ''> <  >> &>''
+  * stampare differenze tra file: ''diff''
+  * connessione remota: ''ssh''
+  * copia in remoto: ''scp''
+ 
+==== Valgrind ==== 
+
+[[http://valgrind.org/|Valgrind]] e` un software per rilevare memory leaks (malloc/free dimenticati, accessi in memoria sbagliati..).
+Puo` essere utile per trovare errori negli esercizi di laboratorio. 
+
+Potete trovare alcuni esempi [[http://www.cprogramming.com/debugging/valgrind.html| qui]].  
+
+==== Riferimenti ====
+  * **linux e unix**: vi consiglio di guardare [[http://www.youtube.com/watch?v=1o9RaSdGlOI|questo]] se non lo avete visto;  
+  * **terminale**: potete dare un'occhiata alla [[http://projects.cli.di.unipi.it/LIP/LPIU-12/Beatrice/cdc2006.pdf | guida al centro di calcolo]], che descrive piu` in dettaglio gran parte dei comandi di cui abbiamo parlato. Una guida piu` estesa la trovate [[https://www.dropbox.com/s/igqhqv7ibx3hln7/corso-linux.pdf| qui]];
+  * un manuale sulla [[http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html| bash]]; 
+  * [[http://a2.pluto.it/a2/a21.htm | Appunti di informatica libera ]];
+  * Per cultura personale: [[http://www.amazon.it/Hackers-eroi-della-rivoluzione-informatica/dp/8886926979 | Hackers. Gli eroi della rivoluzione informatica]] di Steven Levy;
+  * Durante la lezione vi ho parlato anche di LaTeX, trovate due guide fatte bene [[http://zelmanov.ptep-online.com/ctan/lshort_italian.pdf| qui]] e [[http://www.telematica.polito.it/oldsite/muscariello/courses/lab_statistica/impara_latex.pdf| qui]].
+ 
